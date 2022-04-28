@@ -18,4 +18,4 @@ RUN chown -R www-data: /app
 
 CMD sh /app/docker/startup.sh
 
-CMD sh /app/db-migration.sh
+# CMD sh /app/db-migration.sh
