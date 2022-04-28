@@ -17,3 +17,6 @@ RUN cd /app && \
 RUN chown -R www-data: /app
 
 CMD sh /app/docker/startup.sh
+
+RUN chmod +x /var/www/html/db-migration.sh
+ENTRYPOINT ["/var/www/html/db-migration.sh"]
