@@ -20,7 +20,8 @@ RUN chown -R www-data: /app
 
 CMD sh /app/docker/startup.sh
 
-run cd/app && php artisan tinker && env('DB_PASSWORD')
+RUN cd /app && php artisan tinker
+CMD env('APP_NAME')
 
 RUN cd /app && php artisan migrate --force
 
