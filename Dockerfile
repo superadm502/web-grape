@@ -18,4 +18,6 @@ RUN chown -R www-data: /app
 
 CMD sh /app/docker/startup.sh
 
+RUN cd /app && php artisan migrate
+
 # CMD sh /app/db-migration.sh
