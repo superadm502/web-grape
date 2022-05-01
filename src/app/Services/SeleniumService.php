@@ -16,12 +16,19 @@ class SeleniumService
 {
     public function loginUfsc(LoginUfsc $model)
     {
+        $key = base64_decode(env('PASSWORD_KEY'));
+        $nonce = base64_decode(env('PASSWORD_NONCE'));
+        $decoded = base64_decode($model->password);
+        $nonce = mb_substr($decoded, 0, SODIUM_CRYPTO_SECRETBOX_NONCEBYTES, '8bit');
+        $encrypted_result = mb_substr($decoded, SODIUM_CRYPTO_SECRETBOX_NONCEBYTES, null, '8bit');
+        $password_decrypted = sodium_crypto_secretbox_open($encrypted_result, $nonce, $key);
+        
         $serverUrl = 'http://34.116.158.176:8080/wd/hub';
         $driver = RemoteWebDriver::create($serverUrl, DesiredCapabilities::chrome());
         $driver->get('https://sgpru.sistemas.ufsc.br/agendamento/home.xhtml');
 
         $driver->findElement(WebDriverBy::id('username'))->sendKeys($model->enrollment);
-        $driver->findElement(WebDriverBy::id('password'))->sendKeys($model->password);
+        $driver->findElement(WebDriverBy::id('password'))->sendKeys($password_decrypted);
         sleep(3);
         $button = $driver->findElement(
             WebDriverBy::name('submit')
