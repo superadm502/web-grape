@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LoginUfscController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
@@ -21,4 +23,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::get('/login_ufsc/form', [LoginUfscController::class, 'form'])->name('login_ufsc_form');
+    Route::post('/login_ufsc/form', [LoginUfscController::class, 'store'])->name('login_ufsc_store');
+});
