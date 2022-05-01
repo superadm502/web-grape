@@ -33,7 +33,7 @@ steps:
       - '-i'
       - '$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA'
       - '-e'
-      - DB_CONNECTION=$_DB_CONNECTION
+      - DB_CONNECTION=mysql
       - '-e'
       - 'DB_SOCKET=$_DB_SOCKET'
       - '-e'
