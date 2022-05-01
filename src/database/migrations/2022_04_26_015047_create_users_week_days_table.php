@@ -15,8 +15,10 @@ class CreateUsersWeekDaysTable extends Migration
     {
         Schema::create('users_week_day', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_id');
-            $table->string('week_day_id');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('week_day_id')->unsigned();
+            $table->foreign('week_day_id')->references('id')->on('week_day');
         });
     }
 
