@@ -3,9 +3,7 @@ FROM php:8.1-fpm-alpine
 RUN docker-php-ext-install pdo pdo_mysql
 
 RUN apk add --no-cache nginx wget
-
 RUN mkdir -p /run/nginx
-
 COPY docker/nginx.conf /etc/nginx/nginx.conf
 
 RUN mkdir -p /app
@@ -19,5 +17,4 @@ RUN cd /app && \
 RUN chown -R www-data: /app
 
 CMD sh /app/docker/startup.sh
-
-RUN cd /app && php artisan migrate --force
+CMD sh /app/db-migration.sh
