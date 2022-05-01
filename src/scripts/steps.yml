@@ -37,7 +37,7 @@ steps:
       - '-e'
       - 'DB_SOCKET=$_DB_SOCKET'
       - '-e'
-      - DB_PORT=1433
+      - DB_PORT=3306
       - '-e'
       - DB_DATABASE=$_DB_DATABASE
       - '-e'
