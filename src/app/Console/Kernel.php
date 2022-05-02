@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('selenium:agendarRefeicao')->dailyAt('20:22');
+        $schedule->command('selenium:agendarRefeicao')->dailyAt('20:27');
     }
 
     /**
