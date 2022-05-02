@@ -18,8 +18,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         $schedule->command('selenium:agendarRefeicao')
             ->timezone('America/Sao_Paulo')
-            ->everyTenMinutes()
-            // ->dailyAt('22:44')
+            ->everyTwoMinutes()
             ->emailOutputOnFailure('msubetir@gmail.com');;
     }
 
