@@ -1,8 +1,10 @@
 FROM php:8.1-fpm-alpine
 
-RUN apk add --no-cache nginx wget libzip-dev zip
+RUN apk add --no-cache nginx wget 
+RUN apk add libsodium
 
-RUN docker-php-ext-install pdo pdo_mysql zip
+RUN docker-php-ext-install pdo pdo_mysql sodium
+# RUN docker-php-ext-enable sodium pdo pdo_mysql
 
 RUN mkdir -p /run/nginx
 COPY docker/nginx.conf /etc/nginx/nginx.conf
