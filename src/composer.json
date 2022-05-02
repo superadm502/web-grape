@@ -12,7 +12,8 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
-        "php-webdriver/webdriver": "^1.12"
+        "php-webdriver/webdriver": "^1.12",
+        "stackkit/laravel-google-cloud-scheduler": "^2.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
