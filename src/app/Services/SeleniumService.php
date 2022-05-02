@@ -35,8 +35,8 @@ class SeleniumService
         );
         $button->click();
 
-        $redirect = $driver->findElement(WebDriverBy::name('j_id20:j_id21'));
-        $redirect->click();
+        // $redirect = $driver->findElement(WebDriverBy::name('j_id20:j_id21'));
+        // $redirect->click();
 
         $this->agendar($driver, 'Almoço');
         $this->agendar($driver, 'Jantar');
