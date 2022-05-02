@@ -6,6 +6,7 @@
         <div class="col-md-12">
             <div class="card-body flex justify-content-center align-items-center mt-5" style="height: 100%">
                 <h1 class="display-1 text-center" style="color: purple">Grape</h1>
+                <h1 class="display-5 text-center" style="color: gray">{{date("h:i a")}}</h1>
             </div>
         </div>
     </div>
