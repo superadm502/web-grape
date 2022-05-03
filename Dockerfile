@@ -1,5 +1,7 @@
 FROM php:8.1-fpm-alpine
 
+RUN echo 'max_execution_time = 120' >> /usr/local/etc/php/conf.d/docker-php-maxexectime.ini;
+
 RUN apk add --no-cache nginx wget libzip-dev zip
 
 RUN docker-php-ext-install pdo pdo_mysql zip
