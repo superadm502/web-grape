@@ -27,19 +27,22 @@ class SeleniumService
         $driver = RemoteWebDriver::create($serverUrl, DesiredCapabilities::chrome());
         $driver->get('https://sgpru.sistemas.ufsc.br/agendamento/home.xhtml');
 
-        $driver->findElement(WebDriverBy::id('username'))->sendKeys($model->enrollment);
-        $driver->findElement(WebDriverBy::id('password'))->sendKeys($password_decrypted);
-        sleep(3);
-        $button = $driver->findElement(
-            WebDriverBy::name('submit')
-        );
-        $button->click();
-
-        // $redirect = $driver->findElement(WebDriverBy::name('j_id20:j_id21'));
-        // $redirect->click();
-
-        $this->agendar($driver, 'Almoço');
-        $this->agendar($driver, 'Jantar');
+        try {
+            $driver->findElement(WebDriverBy::id('username'))->sendKeys($model->enrollment);
+            $driver->findElement(WebDriverBy::id('password'))->sendKeys($password_decrypted);
+            sleep(2);
+            $button = $driver->findElement(
+                WebDriverBy::name('submit')
+            );
+            $button->click();
+            // $redirect = $driver->findElement(WebDriverBy::name('j_id20:j_id21'));
+            // $redirect->click();
+            $this->agendar($driver, 'Almoço');
+            $this->agendar($driver, 'Jantar');
+        } catch (\Throwable $th) {
+            $driver->quit();
+        }
+         
         $driver->quit();
     }
 
@@ -55,6 +58,6 @@ class SeleniumService
         
         $driver->findElement(WebDriverBy::name('agendamentoForm:j_idt93'))->click();
         
-        sleep(3);
+        sleep(2);
     }
 }
