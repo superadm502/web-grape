@@ -5,24 +5,20 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 @if ($loginUfsc)
-                    <div class="card">
-                        <div class="card-header">Agendamento de refeição automático</div>
-
-                        <div class="card-body">
-                            @if (session('status'))
-                                <div class="alert alert-success" role="alert">
-                                    {{ session('status') }}
-                                </div>
-                            @endif
-
-                            <div class="alert alert-success" role="alert">
-                                Ativado
-                            </div>
+                    <div class="card text-center">
+                        <div class="card-header">
+                            Agendamento de refeição automático diário
                         </div>
-                    </div>
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <div class="alert alert-success col-md-8" role="alert">
+                                Ativo
+                            </div>
+                          <p class="card-text">Para desabilitar remova o seu registro de autenticação</p>
+                        </div>
+                      </div>
                 @else
                     <div class="alert alert-danger" role="alert">
-                        {{ __('Realize a autenticação da UFSC') }}
+                        {{ __('Realize sua autenticação da UFSC para liberar os serviços') }}
                     </div>
                 @endif
             </div>

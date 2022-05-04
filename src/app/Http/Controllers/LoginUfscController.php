@@ -9,7 +9,8 @@ use Auth;
 class LoginUfscController extends Controller
 {
     public function form(){
-        return view('login_ufsc.form');
+        $loginUfsc = LoginUfsc::where('user_id', Auth::user()->id)->first();
+        return view('login_ufsc.form', compact('loginUfsc'));
     }
 
     public function store(Request $request){
@@ -24,6 +25,12 @@ class LoginUfscController extends Controller
         $content['password'] = $encoded;
 
         LoginUfsc::create($content);
+        return redirect()->route("home");
+    }
+
+    public function delete(int $id){
+        $loginUfsc = LoginUfsc::find($id);
+        $loginUfsc->delete();
         return redirect()->route("home");
     }
 }
