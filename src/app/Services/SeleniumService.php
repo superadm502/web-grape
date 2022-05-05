@@ -23,6 +23,7 @@ class SeleniumService
         $encrypted_result = mb_substr($decoded, SODIUM_CRYPTO_SECRETBOX_NONCEBYTES, null, '8bit');
         $password_decrypted = sodium_crypto_secretbox_open($encrypted_result, $nonce, $key);
         
+        
         $serverUrl = env('SELENIUM_URL');
         $driver = RemoteWebDriver::create($serverUrl, DesiredCapabilities::chrome());
         $driver->get('https://sgpru.sistemas.ufsc.br/agendamento/home.xhtml');
