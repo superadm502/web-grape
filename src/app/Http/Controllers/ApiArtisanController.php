@@ -7,8 +7,9 @@ use Illuminate\Support\Facades\Artisan;
 
 class ApiArtisanController extends Controller
 {
-    public function scheduleRun()
+    public function scheduleRun(Request $request)
     {
-        Artisan::call('schedule:run');
+        if(env('SCHEDULE_KEY') == $request->key)
+            Artisan::call('schedule:run');
     }
 }
