@@ -31,3 +31,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/login_ufsc/form', [LoginUfscController::class, 'store'])->name('login_ufsc_store');
     Route::delete('/login_ufsc/form/{id}', [LoginUfscController::class, 'delete'])->name('login_ufsc_delete');
 });
+
