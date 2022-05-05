@@ -13,7 +13,7 @@
                             <div class="alert alert-success col-md-8" role="alert">
                                 Ativo
                             </div>
-                          <p class="card-text">Para desabilitar remova o seu registro de autenticação</p>
+                          <p class="card-text">OBS: Para desabilitar remova o seu registro de autenticação</p>
                         </div>
                       </div>
                 @else
