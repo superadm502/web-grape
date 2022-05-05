@@ -19,4 +19,9 @@ class HomeController extends Controller
         $loginUfsc = LoginUfsc::where('user_id', Auth::user()->id)->first();
         return view('home', compact('loginUfsc'));
     }
+
+    public function faq()
+    {
+        return view('faq');
+    }
 }
