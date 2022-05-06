@@ -16,7 +16,7 @@ class CloudScheduler
      */
     public function handle(Request $request, Closure $next)
     {
-        if($request->header('schedule_key') == env('SCHEDULE_KEY'))
+        if($request->header('schedule-key') == env('SCHEDULE_KEY'))
             return $next($request);
         return response()->json(['error' => 'Unauthenticated.'], 401);
     }
