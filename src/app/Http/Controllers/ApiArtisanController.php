@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 
 class ApiArtisanController extends Controller
 {
-    public function scheduleRun(Request $request)
+    public function scheduleRun()
     {
-        if(env('SCHEDULE_KEY') == $request->key)
-            Artisan::call('schedule:run');
+        Artisan::call('schedule:run');
+        return 'Sucess';
     }
 }

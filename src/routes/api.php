@@ -19,4 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('schedule-run', [ApiArtisanController::class, 'scheduleRun']);
+Route::group(['middleware' => 'cloud.schedule'], function () {
+    Route::post('schedule-run', [ApiArtisanController::class, 'scheduleRun']);
+});
