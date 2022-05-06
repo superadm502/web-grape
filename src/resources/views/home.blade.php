@@ -10,14 +10,14 @@
                             Agendamento de refeição automático diário
                         </div>
                         <div class="card-body d-flex flex-column align-items-center">
-                            <div class="alert alert-success col-md-8" role="alert">
-                                Ativo
+                            <div class="alert alert-success col-md-6" role="alert">
+                                O serviço está ativo
                             </div>
-                          <p class="card-text">OBS: Para desabilitar remova o seu registro de autenticação</p>
+                            <p class="card-text">OBS: Para desabilitar o serviço remova o seu registro de Autenticação</p>
                         </div>
-                      </div>
+                    </div>
                 @else
-                    <div class="alert alert-danger" role="alert">
+                    <div class="alert alert-warning" role="alert">
                         {{ __('Realize sua autenticação da UFSC para liberar os serviços') }}
                     </div>
                 @endif

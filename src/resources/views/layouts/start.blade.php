@@ -41,6 +41,10 @@
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Cadastro') }}</a>
                             </li>
                         @endif
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('faq') }}">{{ __('FAQ') }}</a>
+                        </li>
                     </ul>
                 </div>
             </div>
