@@ -24,9 +24,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/faq', [App\Http\Controllers\HomeController::class, 'faq'])->name('faq');
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/faq', [App\Http\Controllers\HomeController::class, 'faq'])->name('faq');
 
     Route::get('/login_ufsc/form', [LoginUfscController::class, 'form'])->name('login_ufsc_form');
     Route::post('/login_ufsc/form', [LoginUfscController::class, 'store'])->name('login_ufsc_store');
