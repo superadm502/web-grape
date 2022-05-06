@@ -37,11 +37,13 @@
                     </p>
                     <p>
                         Todos os dados sensíveis são criptogrados com uma chave secreta que apenas o servidor e a conta de administrador tem acesso.
-                        A senha do administrador é composta em partes por 3 dos nossos membros. Sendo assim, é necessário a aprovação, além da constante vigília, dos mesmos para acessar
-                        a conta de administrador e realizar as mudanças pertinentes sem expor ou mudar algo crítico.
+                        A senha da conta do administrador é composta em partes por 3 dos nossos membros, 
+                        logo, é necessário a aprovação, além da ação conjunta, dos mesmos para acessar
+                        a conta. É provável que nunca seja necessário acessar a conta novamente pois 
+                        foi criada com o objetivo exclusivo de manter a chave secreta e nos impedir de acessar ela.
                     </p>
                     <p>
-                        Nós, membros da Grape, individualmente teremos apenas as permissões mínimas no projeto para realizar o desenvolvimento e as manutenções em geral.
+                        Nós, membros da Grape, individualmente teremos apenas as permissões básicas no sistema para realizar o desenvolvimento e as manutenções em geral.
                     </p>
                 </div>
 
@@ -54,7 +56,7 @@
                         Caso queira reaproveitar algo do código fonte se atente as licenças e direitos autorais presentes no mesmo.
                     </p>
                     <p>
-                        Importante ressaltar que as mudanças realizadas no código devem ser obrigatoriamente
+                        Importante ressaltar que as mudanças realizadas no código passam obrigatoriamente por um processo no qual devem ser
                         aprovadas pela maioria dos membros/colaboradores presentes no repositório, para então chegar no servidor.
                     </p>
                 </div>
