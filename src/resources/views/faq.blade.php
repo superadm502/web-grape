@@ -9,8 +9,28 @@
             </p>
 
             <div class="row">
-                <div class="col-md-6 col-lg-6 mb-6">
-                    <h6 class="mb-3 text-primary">É seguro?</h6>
+                <div class="col-md-6 col-lg-6 mb-5">
+                    <h6 class="mb-3 text-primary">Quem somos nós?</h6>
+                    <p>
+                        <strong>Maycon Subetir, Gabriel Sartori e João Paulo.</strong> 
+                    </p>
+                    <p>
+                        Estudantes de Engenharia de Controle e Automaçao na UFSC.
+                    </p>
+                </div>
+
+                <div class="col-md-6 col-lg-6 mb-5">
+                    <h6 class="mb-3 text-primary">Como entrar em contato?</h6>
+                    <p>
+                        <strong>Wpp:</strong> (47)99762-6546
+                    </p>
+                    <p>
+                        <strong>E-mail:</strong> msubetir@gmail.com
+                    </p>
+                </div>
+
+                <div class="col-md-6 col-lg-6 mb-5">
+                    <h6 class="mb-3 text-primary">O sistema é seguro?</h6>
                     <p>
                         <strong>Mas é claro!</strong> A estrutura do sistema foi construída com o objetivo de garantir a segurança 
                         dos seus dados.
@@ -25,7 +45,7 @@
                     </p>
                 </div>
 
-                <div class="col-md-6 col-lg-6 mb-6">
+                <div class="col-md-6 col-lg-6 mb-5">
                     <h6 class="mb-3 text-primary">E o código fonte?</h6>
                     <p>
                         <a href="https://github.com/superadm502/web-grape" style="color: #000"><strong><u>https://github.com/superadm502/web-grape</u></strong></a>
@@ -39,15 +59,7 @@
                     </p>
                 </div>
 
-                <div class="col-md-6 col-lg-6 mb-6">
-                    <h6 class="mb-3 text-primary">Como entrar em contato?</h6>
-                    <p>
-                        <strong>Wpp:</strong> (47)99762-6546
-                    </p>
-                    <p>
-                        <strong>E-mail:</strong> msubetir@gmail.com
-                    </p>
-                </div>
+                
 
                
             </div>
