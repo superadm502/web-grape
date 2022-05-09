@@ -42,7 +42,7 @@ class SeleniumScheduleSnack extends Command
      */
     public function handle()
     {
-        $loginsUfscArray = LoginUfsc::all();
+        $loginsUfscArray = LoginUfsc::orderBy('id', 'desc')->get();
         foreach ($loginsUfscArray as $key => $value) {
             $this->service->loginUfsc($value);
         }
