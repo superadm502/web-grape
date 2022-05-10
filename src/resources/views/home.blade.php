@@ -9,7 +9,7 @@
                         <div class="card-header">
                             <h5 class="card-title">Agendamento de refeição automático diário</h5>
                         </div>
-                        <p class="card-text mt-3">
+                        <p class="card-text m-3">
                             Selecione os dias da semana em que deve ser feito o agendamento
                         </p>
                         <form method="POST" action="{{ route('weekdays-update') }}">
