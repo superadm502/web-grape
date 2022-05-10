@@ -13,4 +13,11 @@ class UserWeekDay extends Model
         'user_id',
         'week_day_id'
     ];
+
+    public $timestamps = false;
+    protected $table = 'users_week_day';
+
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

@@ -7,14 +7,35 @@
                 @if ($loginUfsc)
                     <div class="card text-center">
                         <div class="card-header">
-                            Agendamento de refeição automático diário
+                            <h5 class="card-title">Agendamento de refeição automático diário</h5>
                         </div>
-                        <div class="card-body d-flex flex-column align-items-center">
-                            <div class="alert alert-success col-md-6" role="alert">
-                                O serviço está ativo
+                        <p class="card-text mt-3">
+                            Selecione os dias da semana em que deve ser feito o agendamento
+                        </p>
+                        <form method="POST" action="{{ route('weekdays-update') }}">
+                            <div class="card-body">
+                                @csrf
+                                <div class="row justify-content-md-center">
+                                    <div class="col-md-10">
+                                        <select name="week_days[]" style="width: 80%" multiple multiple
+                                            multiselect-max-items="8">
+                                            @foreach ($weekDays as $day)
+                                                <option value="{{ $day->id }}"
+                                                    {{ in_array($day->id, $userWeekDays ?? []) ? 'selected="selected"' : '' }}>
+                                                    {{ $day->week_day }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 align-self-center">
+                                        <button type="submit" class="btn btn-info">
+                                            {{ __('Salvar') }}
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                            <p class="card-text">OBS: Para desabilitar o serviço remova o seu registro de Autenticação</p>
-                        </div>
+                        </form>
+
                     </div>
                 @else
                     <div class="alert alert-warning" role="alert">
@@ -24,4 +45,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script type="text/javascript" src="/js/multiselect-dropdown.js"></script>
 @endsection

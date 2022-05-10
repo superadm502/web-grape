@@ -12,4 +12,8 @@ class WeekDay extends Model
     protected $fillable = [
         'week_day'
     ];
+
+    protected $table = 'week_day';
+
+    public $timestamps = false;
 }

@@ -3,7 +3,9 @@
 namespace App\Console\Commands;
 
 use App\Models\LoginUfsc;
+use App\Models\UserWeekDay;
 use App\Services\SeleniumService;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class SeleniumScheduleSnack extends Command
@@ -42,9 +44,10 @@ class SeleniumScheduleSnack extends Command
      */
     public function handle()
     {
-        $loginsUfscArray = LoginUfsc::orderBy('id', 'desc')->get();
-        foreach ($loginsUfscArray as $key => $value) {
-            $this->service->loginUfsc($value);
+        $weekDayId = Carbon::now()->dayOfWeek + 1;
+        $usersWeekDays = UserWeekDay::where('week_day_id', $weekDayId)->orderBy('user_id', 'desc')->get();
+        foreach ($usersWeekDays as $key => $value) {
+            $this->service->loginUfsc($value->user->loginUfsc);
         }
     }
 }

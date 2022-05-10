@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginUfscController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WeekDayController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
@@ -28,6 +29,8 @@ Route::get('/faq', [App\Http\Controllers\HomeController::class, 'faq'])->name('f
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::post('/weekdays', [WeekDayController::class, 'update'])->name('weekdays-update');
 
     Route::get('/login_ufsc/form', [LoginUfscController::class, 'form'])->name('login_ufsc_form');
     Route::post('/login_ufsc/form', [LoginUfscController::class, 'store'])->name('login_ufsc_store');
