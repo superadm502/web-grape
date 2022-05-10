@@ -16,9 +16,9 @@
                             <div class="card-body">
                                 @csrf
                                 <div class="row justify-content-md-center">
-                                    <div class="col-md-10">
-                                        <select name="week_days[]" style="width: 80%" multiple multiple
-                                            multiselect-max-items="8">
+                                    <div class="col-md-10 mb-2">
+                                        <select name="week_days[]" style="width: 100%" multiple multiple
+                                            multiselect-max-items="8" multiselect-hide-x="true">
                                             @foreach ($weekDays as $day)
                                                 <option value="{{ $day->id }}"
                                                     {{ in_array($day->id, $userWeekDays ?? []) ? 'selected="selected"' : '' }}>
