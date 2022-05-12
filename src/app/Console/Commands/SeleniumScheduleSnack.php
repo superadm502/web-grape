@@ -44,7 +44,7 @@ class SeleniumScheduleSnack extends Command
      */
     public function handle()
     {
-        $weekDayId = Carbon::now()->dayOfWeek + 1;
+        $weekDayId = Carbon::now()->dayOfWeek + 1 + 1;
         $usersWeekDays = UserWeekDay::where('week_day_id', $weekDayId)->orderBy('user_id', 'desc')->get();
         foreach ($usersWeekDays as $key => $value) {
             $this->service->loginUfsc($value->user->loginUfsc);

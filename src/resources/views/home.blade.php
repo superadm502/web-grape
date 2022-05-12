@@ -3,8 +3,8 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-10 text-center mb-2">
-                <h2 style="color: purple"  data-bs-toggle="tooltip" data-bs-placement="top" title="Usuários autenticados">{{count($loginsUfsc)}}</h2>
+            <div class="col-md-10 row justify-content-center text-center">
+                <h2 class="col-3" style="color: purple" data-bs-toggle="tooltip" data-bs-placement="top" title="Usuários autenticados">{{count($loginsUfsc)}}</h2>
             </div>
             <div class="col-md-8">
                 @if ($loginUfsc)
