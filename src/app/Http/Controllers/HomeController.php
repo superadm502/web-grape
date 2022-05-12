@@ -18,10 +18,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $loginsUfsc =  LoginUfsc::all();
         $loginUfsc = LoginUfsc::where('user_id', Auth::user()->id)->first();
         $weekDays = WeekDay::all();
         $userWeekDays = UserWeekDay::where('user_id', Auth::user()->id)->get()->pluck('week_day_id')->toArray();
-        return view('home', compact('loginUfsc', 'weekDays', 'userWeekDays'));
+        return view('home', compact('loginsUfsc', 'loginUfsc', 'weekDays', 'userWeekDays'));
     }
 
     public function faq()

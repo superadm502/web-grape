@@ -3,6 +3,9 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
+            <div class="col-md-10 text-center mb-2">
+                <h2 style="color: purple"  data-bs-toggle="tooltip" data-bs-placement="top" title="Usuários autenticados">{{count($loginsUfsc)}}</h2>
+            </div>
             <div class="col-md-8">
                 @if ($loginUfsc)
                     <div class="card text-center">
@@ -49,4 +52,10 @@
 
 @section('script')
     <script type="text/javascript" src="/js/multiselect-dropdown.js"></script>
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
 @endsection
