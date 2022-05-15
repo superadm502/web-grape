@@ -53,9 +53,15 @@ class SeleniumService
         
         sleep(1);
         
-        $refData = $driver->findElement(WebDriverBy::name('agendamentoForm:refeicao'));
-        $selectElement = new WebDriverSelect($refData);
+        $refRef = $driver->findElement(WebDriverBy::name('agendamentoForm:refeicao'));
+        $selectElement = new WebDriverSelect($refRef);
         $selectElement->selectByVisibleText($type);
+        sleep(1);
+
+        $refData = $driver->findElement(WebDriverBy::name('agendamentoForm:dtRefeicao'));
+        $selectElement2 = new WebDriverSelect($refData);
+        $date = date('d/m/Y');
+        $selectElement2->selectByValue($date);
         
         $driver->findElement(WebDriverBy::name('agendamentoForm:j_idt93'))->click();
         
