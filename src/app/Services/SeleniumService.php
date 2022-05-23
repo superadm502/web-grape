@@ -38,8 +38,8 @@ class SeleniumService
             $button->click();
             // $redirect = $driver->findElement(WebDriverBy::name('j_id20:j_id21'));
             // $redirect->click();
-            $this->agendar($driver, 'Almoço');
-            $this->agendar($driver, 'Jantar');
+            $this->agendar($driver, 'Almoço', '11:00');
+            $this->agendar($driver, 'Jantar', '17:00');
         } catch (\Throwable $th) {
             $driver->quit();
         }
@@ -47,7 +47,7 @@ class SeleniumService
         $driver->quit();
     }
 
-    private function agendar($driver, string $type){
+    private function agendar($driver, string $type, string $hour){
         $agendarMenu = $driver->findElement(WebDriverBy::linkText('Agendar refeição'));
         $agendarMenu->click();
         
@@ -62,6 +62,10 @@ class SeleniumService
         $selectElement2 = new WebDriverSelect($refData);
         $date = date('d/m/Y');
         $selectElement2->selectByValue($date);
+
+        $refHours = $driver->findElement(WebDriverBy::name('agendamentoForm:hrRefeicao'));
+        $selectElement3 = new WebDriverSelect($refHours);
+        $selectElement3->selectByValue($hour);
         
         $driver->findElement(WebDriverBy::name('agendamentoForm:j_idt93'))->click();
         
