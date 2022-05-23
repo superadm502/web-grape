@@ -62,6 +62,7 @@ class SeleniumService
         $selectElement2 = new WebDriverSelect($refData);
         $date = date('d/m/Y');
         $selectElement2->selectByValue($date);
+        sleep(1);
 
         $refHours = $driver->findElement(WebDriverBy::name('agendamentoForm:hrRefeicao'));
         $selectElement3 = new WebDriverSelect($refHours);
