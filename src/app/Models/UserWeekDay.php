@@ -11,7 +11,11 @@ class UserWeekDay extends Model
 
     protected $fillable = [
         'user_id',
-        'week_day_id'
+        'week_day_id',
+        'launch',
+        'dinner',
+        'launch_hour_id',
+        'dinner_hour_id'
     ];
 
     public $timestamps = false;
