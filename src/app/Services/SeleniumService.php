@@ -64,7 +64,8 @@ class SeleniumService
 
         $refData = $driver->findElement(WebDriverBy::name('agendamentoForm:dtRefeicao'));
         $selectElement2 = new WebDriverSelect($refData);
-        $date = date('d/m/Y');
+        // $date = date('d/m/Y');
+        $date = date('d/m/Y', strtotime( "+1 days" ));
         $selectElement2->selectByValue($date);
         sleep(1);
 
