@@ -15,7 +15,7 @@ class CreateDayHoursTable extends Migration
     {
         Schema::create('day_hour', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('hour');
+            $table->string('hour', 155);
         });
     }
 

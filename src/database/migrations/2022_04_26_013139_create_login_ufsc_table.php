@@ -17,8 +17,8 @@ class CreateLoginUfscTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('enrollment');
-            $table->string('password');
+            $table->string('enrollment', 155);
+            $table->string('password', 155);
             $table->timestamps();
         });
     }
