@@ -7,6 +7,8 @@ use App\Models\UserWeekDay;
 use App\Services\SeleniumService;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
+use Bugsnag\Report;
 
 class SeleniumScheduleSnack extends Command
 {
@@ -49,5 +51,10 @@ class SeleniumScheduleSnack extends Command
         foreach ($usersWeekDays as $key => $value) {
             $this->service->loginUfsc($value, $value->user->loginUfsc);
         }
+
+        Bugsnag::registerCallback(function ($report) {
+            $report->setSeverity('info');
+        });
+        Bugsnag::notifyError('Aviso de completude!', 'Agendamentos do dia '. date('d/m/Y') . ' finalizados.');
     }
 }
