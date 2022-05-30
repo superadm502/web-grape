@@ -61,6 +61,13 @@
                     </p>
                 </div>
 
+                <div class="col-md-6 col-lg-6 mb-5">
+                    <h6 class="mb-3 text-primary">Data de hoje?</h6>
+                    <p>
+                        <strong>{{date('d/m/Y')}}</strong>
+                    </p>
+                </div>
+
                 
 
                

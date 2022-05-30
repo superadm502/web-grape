@@ -22,10 +22,6 @@
                     title="Usuários autenticados">{{ count($loginsUfsc) }}</h2>
             </div>
             <div class="col-md-8">
-                <div class="alert alert-danger" role="alert">
-                    {{ __('A UFSC adicionou novamente a opção de escolher os horários em que a refeição será agendada. 
-                    Ainda estamos nos adaptando a essa mudança, portanto o sistema não estará funcionando 100% por enquanto.') }}
-                </div>
                 @if ($loginUfsc)
                     <div class="card text-center">
                         <div class="card-header">

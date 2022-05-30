@@ -13,6 +13,8 @@ use Facebook\WebDriver\Exception\WebDriverException;
 use Facebook\WebDriver\Firefox\FirefoxProfile;
 use Facebook\WebDriver\WebDriverBy;
 use Facebook\WebDriver\WebDriverSelect;
+use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
+use RuntimeException;
 
 class SeleniumService
 {
@@ -24,13 +26,11 @@ class SeleniumService
         $nonce = mb_substr($decoded, 0, SODIUM_CRYPTO_SECRETBOX_NONCEBYTES, '8bit');
         $encrypted_result = mb_substr($decoded, SODIUM_CRYPTO_SECRETBOX_NONCEBYTES, null, '8bit');
         $password_decrypted = sodium_crypto_secretbox_open($encrypted_result, $nonce, $key);
-        
-        
         $serverUrl = env('SELENIUM_URL');
-        $driver = RemoteWebDriver::create($serverUrl, DesiredCapabilities::chrome());
-        $driver->get('https://sgpru.sistemas.ufsc.br/agendamento/home.xhtml');
 
         try {
+            $driver = RemoteWebDriver::create($serverUrl, DesiredCapabilities::chrome());
+            $driver->get('https://sgpru.sistemas.ufsc.br/agendamento/home.xhtml');
             $driver->findElement(WebDriverBy::id('username'))->sendKeys($loginUfsc->enrollment);
             $driver->findElement(WebDriverBy::id('password'))->sendKeys($password_decrypted);
             sleep(2);
@@ -38,14 +38,19 @@ class SeleniumService
                 WebDriverBy::name('submit')
             );
             $button->click();
-            // $redirect = $driver->findElement(WebDriverBy::name('j_id20:j_id21'));
-            // $redirect->click();
             if($userWeekDay->launch)
                 $this->agendar($driver, 'Almoço', DayHour::find($userWeekDay->launch_hour_id)->hour ?? '11:00');
             if($userWeekDay->dinner)
                 $this->agendar($driver, 'Jantar', DayHour::find($userWeekDay->dinner_hour_id)->hour ?? '17:00');
         } catch (\Throwable $th) {
-            $driver->quit();
+            Bugsnag::registerCallback(function ($report) use ($loginUfsc) {
+                $report->setUser([
+                    'id' => $loginUfsc->user_id,
+                    'name' => '',
+                    'email' => '',
+                ]);
+            });
+            Bugsnag::notifyException($th);
         }
          
         $driver->quit();
@@ -65,7 +70,7 @@ class SeleniumService
         $refData = $driver->findElement(WebDriverBy::name('agendamentoForm:dtRefeicao'));
         $selectElement2 = new WebDriverSelect($refData);
         $date = date('d/m/Y');
-        // $date = date('d/m/Y', strtotime( "+1 days" ));
+        // $date = date('d/m/Y', strtotime( "+3 days" ));
         $selectElement2->selectByValue($date);
         sleep(1);
 
