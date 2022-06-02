@@ -38,22 +38,37 @@ class SeleniumService
                 WebDriverBy::name('submit')
             );
             $button->click();
-            if($userWeekDay->launch)
-                $this->agendar($driver, 'Almoço', DayHour::find($userWeekDay->launch_hour_id)->hour ?? '11:00');
-            if($userWeekDay->dinner)
-                $this->agendar($driver, 'Jantar', DayHour::find($userWeekDay->dinner_hour_id)->hour ?? '17:00');
+            if($userWeekDay->launch){
+                try {
+                    $this->agendar($driver, 'Almoço', DayHour::find($userWeekDay->launch_hour_id)->hour ?? '11:00');
+                } catch (\Throwable $th) {
+                    $this->reportError($loginUfsc, $th);
+                }
+            }
+            if($userWeekDay->dinner){
+                try {
+                    $this->agendar($driver, 'Jantar', DayHour::find($userWeekDay->dinner_hour_id)->hour ?? '17:00');
+                } catch (\Throwable $th) {
+                    $this->reportError($loginUfsc, $th);
+                }
+                
+            }
         } catch (\Throwable $th) {
-            Bugsnag::registerCallback(function ($report) use ($loginUfsc) {
-                $report->setUser([
-                    'id' => $loginUfsc->user_id,
-                    'name' => '',
-                    'email' => '',
-                ]);
-            });
-            Bugsnag::notifyException($th);
+            $this->reportError($loginUfsc, $th);
         }
          
         $driver->quit();
+    }
+
+    private function reportError($loginUfsc, $th){
+        Bugsnag::registerCallback(function ($report) use ($loginUfsc) {
+            $report->setUser([
+                'id' => $loginUfsc->user_id,
+                'name' => '',
+                'email' => '',
+            ]);
+        });
+        Bugsnag::notifyException($th);
     }
 
     private function agendar($driver, string $type, string $hour){
